@@ -7,22 +7,22 @@ on:
 
 jobs:
   sign-in:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-24.04
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v7
       
       - name: 设置Python
-        uses: actions/setup-python@v4
+        uses: actions/setup-python@v7
         with:
-          python-version: '3.9'
+          python-version: '3.11'
       
       - name: 缓存Python依赖
-        uses: actions/cache@v3
+        uses: actions/cache@v6
         with:
           path: ~/.cache/pip
-          key: ${{ runner.os }}-python-${{ hashFiles('**/requirements.txt') }}
+          key: ${{ runner.os }}-py3.11-${{ hashFiles('**/requirements.txt') }}
           restore-keys: |
-            ${{ runner.os }}-python-
+            ${{ runner.os }}-py3.11-
       
       - name: 安装依赖
         run: |
